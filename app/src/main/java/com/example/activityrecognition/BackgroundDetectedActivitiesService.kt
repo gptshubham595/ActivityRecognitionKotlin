@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import com.google.android.gms.location.ActivityRecognitionClient
 import com.google.android.gms.tasks.OnSuccessListener
+import java.util.Spliterator.IMMUTABLE
 
 class BackgroundDetectedActivitiesService : Service() {
     private lateinit var mIntentService: Intent
@@ -31,7 +32,7 @@ class BackgroundDetectedActivitiesService : Service() {
         mActivityRecognitionClient = ActivityRecognitionClient(this)
         mIntentService = Intent(this, DetectedActivitiesIntentService::class.java)
         mPendingIntent =
-            PendingIntent.getService(this, 1, mIntentService, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getService(this, 1, mIntentService, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.IMMUTABLE )
         requestActivityUpdatesButtonHandler()
     }
 
