@@ -32,7 +32,7 @@ class BackgroundDetectedActivitiesService : Service() {
         mActivityRecognitionClient = ActivityRecognitionClient(this)
         mIntentService = Intent(this, DetectedActivitiesIntentService::class.java)
         mPendingIntent =
-            PendingIntent.getService(this, 1, mIntentService, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.IMMUTABLE )
+            PendingIntent.getService(this, 1, mIntentService, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE )
         requestActivityUpdatesButtonHandler()
     }
 
